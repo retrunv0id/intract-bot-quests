@@ -5,7 +5,7 @@
 
 ```bash
 function clickTasksAndVerify() {
-    const taskElements = document.querySelectorAll('._continue_button_lw9ii_56');
+    const taskElements = document.querySelectorAll('._tasks_container_1ftdw_1');
 
     if (taskElements.length === 0) {
         console.log('No task elements found.');
@@ -24,7 +24,7 @@ function clickTasksAndVerify() {
     console.log(`Clicked on ${taskElements.length} task element(s) in total.`);
 
     setTimeout(() => {
-        const verifyButtons = document.querySelectorAll('button[data-verify-button-status="idle"]._container_d8fl8_1');
+        const verifyButtons = document.querySelectorAll('button[data-verify-button-status="idle"]._container_1b13v_1');
 
         if (verifyButtons.length === 0) {
             console.log('No verify buttons found.');
