@@ -5,7 +5,7 @@
 
 ```bash
 function clickTasksAndVerify() {
-    const taskElements = document.querySelectorAll('._task_trigger_container_1h9z2_1');
+    const taskElements = document.querySelectorAll('._continue_button_lw9ii_56');
 
     if (taskElements.length === 0) {
         console.log('No task elements found.');
