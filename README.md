@@ -13,18 +13,15 @@ function clickTasksAndVerify() {
     }
 
     taskElements.forEach((taskElement, index) => {
-        taskElement.addEventListener('click', (event) => {
-            event.preventDefault();
-            event.stopPropagation();
-        }, true);
-        taskElement.click();
+        const event = new MouseEvent("click", { bubbles: true, cancelable: true, view: window });
+        taskElement.dispatchEvent(event);
         console.log(`Clicked on task element ${index + 1}`);
     });
 
     console.log(`Clicked on ${taskElements.length} task element(s) in total.`);
 
     setTimeout(() => {
-        const verifyButtons = document.querySelectorAll('button[data-verify-button-status="idle"]._container_1b13v_1');
+        const verifyButtons = document.querySelectorAll('button._container_1b13v_1');
 
         if (verifyButtons.length === 0) {
             console.log('No verify buttons found.');
@@ -32,14 +29,19 @@ function clickTasksAndVerify() {
         }
 
         verifyButtons.forEach((verifyButton, index) => {
-            verifyButton.click();
-            console.log(`Clicked on verify ${index + 1}`);
+            if (!verifyButton.disabled) { 
+                verifyButton.click();
+                console.log(`Clicked on verify ${index + 1}`);
+            } else {
+                console.log(`Skipped verify ${index + 1}, button is disabled.`);
+            }
         });
 
-        console.log(`Clicked on ${verifyButtons.length} verify (s) in total.`);
+        console.log(`Clicked on ${verifyButtons.length} verify button(s) in total.`);
     }, 8000);
 }
 
 clickTasksAndVerify();
+
 
 ```
